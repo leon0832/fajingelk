@@ -1,0 +1,49 @@
+Table: basic_file
+-----------------+----------------------+------+-----+-------------------+---------
+ Field           | Type                 | Null | Key | Default           | Remarks 
+-----------------+----------------------+------+-----+-------------------+---------
+ id              | BIGINT(19)           | NO   | PRI |                   | 自增ID    
+ creation_time   | TIMESTAMP(19)        | NO   |     | CURRENT_TIMESTAMP | 记录创建时间  
+ pid             | BIGINT(19)           | YES  |     |                   | 法典ID    
+ pname           | VARCHAR(1024)        | YES  |     |                   | 法典名称    
+ content         | TEXT(65535)          | YES  |     |                   | 条文内容    
+ remark          | MEDIUMTEXT(16777215) | YES  |     |                   | 注释信息    
+ sequence        | VARCHAR(1024)        | YES  |     |                   | 所属章节序号（汉字说明）
+ sequence_number | INT(10)              | YES  |     |                   | 所属序列号的int排序类型
+ basic_static    | INT(10)              | YES  |     | 1                 | 条文状态    
+-----------------+----------------------+------+-----+-------------------+---------
+
+Table: error_url
+-------+--------------+------+-----+---------+---------
+ Field | Type         | Null | Key | Default | Remarks 
+-------+--------------+------+-----+---------+---------
+ id    | BIGINT(19)   | NO   | PRI |         |         
+ info  | VARCHAR(550) | YES  |     |         | 错误连接    
+-------+--------------+------+-----+---------+---------
+
+Table: parent_file
+---------------+---------------+------+-----+-------------------+---------
+ Field         | Type          | Null | Key | Default           | Remarks 
+---------------+---------------+------+-----+-------------------+---------
+ id            | INT(10)       | NO   | PRI |                   | 自增ID    
+ creation_time | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP | 记录创建时间  
+ publish       | VARCHAR(1024) | YES  |     |                   | 发行单位    
+ name          | VARCHAR(1024) | YES  |     |                   | 书名      
+ publish_time  | BIGINT(19)    | YES  |     |                   | 发行日期    
+ material_date | BIGINT(19)    | YES  |     |                   | 实施日期    
+ remark        | VARCHAR(1024) | YES  |     |                   | 备注      
+ content_key   | VARCHAR(1024) | YES  |     |                   | 参照关键词   
+ sort_parent   | BIGINT(19)    | YES  |     |                   | 排序      
+ img_url       | VARCHAR(520)  | YES  |     |                   | 图片位置    
+---------------+---------------+------+-----+-------------------+---------
+
+Table: query_city
+-------------+---------------+------+-----+---------+---------
+ Field       | Type          | Null | Key | Default | Remarks 
+-------------+---------------+------+-----+---------+---------
+ id          | BIGINT(19)    | NO   | PRI |         |         
+ ip          | VARCHAR(25)   | YES  |     |         |         
+ city        | VARCHAR(150)  | YES  |     |         |         
+ create_time | TIMESTAMP(19) | YES  |     |         |         
+-------------+---------------+------+-----+---------+---------
+
