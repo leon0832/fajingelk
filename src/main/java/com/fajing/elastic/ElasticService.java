@@ -218,7 +218,7 @@ public class ElasticService extends JFinalModelCase {
 		searchRequestBuilder.setHighlighterPreTags("<em>");
 		searchRequestBuilder.setHighlighterPostTags("</em>");
 
-//
+//s
 		//开始搜索
 		SearchResponse searchResponse = searchRequestBuilder.execute().actionGet();
 		//一般的搜索引擎中，高亮
