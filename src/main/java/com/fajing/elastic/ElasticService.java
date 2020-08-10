@@ -35,20 +35,19 @@ import java.util.Map;
 
 public class ElasticService extends JFinalModelCase {
 
-	private static BasicFileService basicFileService = new BasicFileService();
-
-	private Settings settings = Settings.settingsBuilder().build();
+	private static final BasicFileService basicFileService = new BasicFileService();
 
 	private TransportClient client;
 
 	//es index 相当于数据库名
-	private String indexName = PropKit.get("es_index_name");
+	private final String indexName = PropKit.get("es_index_name");
 
 	//相当于表名
-	private String indexType = PropKit.get("es_index_type");
+	private final String indexType = PropKit.get("es_index_type");
 
 	public ElasticService() {
 		try {
+			Settings settings = Settings.settingsBuilder().build();
 			client = TransportClient.builder()
 					.settings(settings)
 					.build()
@@ -127,7 +126,7 @@ public class ElasticService extends JFinalModelCase {
 
 
 		//创建索引
-		List<IndexRequest> requests = new ArrayList<IndexRequest>();
+		List<IndexRequest> requests = new ArrayList<>();
 		for (String str : basicFileList) {
 			IndexRequest request = client.prepareIndex(indexName, indexType)
 					.setSource(str).request();
@@ -264,7 +263,7 @@ public class ElasticService extends JFinalModelCase {
 				// 取得定义的高亮标签
 				Text[] remarkTexts = remarkField.fragments();
 				// 为remark串值增加自定义的高亮标签
-				StringBuffer remark = new StringBuffer();
+				StringBuilder remark = new StringBuilder();
 				for (Text text : remarkTexts) {
 					remark.append(text);
 				}
@@ -279,7 +278,7 @@ public class ElasticService extends JFinalModelCase {
 				// 取得定义的高亮标签
 				Text[] sequenceTexts = sequenceField.fragments();
 				// 为sequence串值增加自定义的高亮标签
-				StringBuffer sequence = new StringBuffer();
+				StringBuilder sequence = new StringBuilder();
 				for (Text text : sequenceTexts) {
 					sequence.append(text);
 				}
